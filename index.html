@@ -86,7 +86,6 @@
     }
 
     nav a:hover {
-      text-decoration: none;
       background-color: #21618c;
       transform: scale(1.1);
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
@@ -248,45 +247,47 @@
       background: #c9302c;
       transform: scale(1.1);
     }
+
     .gallery-slider {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 kolom */
-  gap: 15px;
-  padding: 10px;
-}
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      padding: 10px;
+    }
 
-.gallery-item {
-  position: relative;
-  display: block;
-  width: 100%;
-  height: auto;
-}
+    .gallery-item {
+      position: relative;
+      display: block;
+      width: 100%;
+      height: auto;
+    }
 
-.gallery-item img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-}
+    .gallery-item img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
 
-.gallery-item figcaption {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-  right: 10px;
-  background-color: rgba(0, 0, 0, 0.7);
-  color: white;
-  padding: 8px;
-  font-size: 16px;
-  text-align: center;
-  border-radius: 5px;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
+    .gallery-item figcaption {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      right: 10px;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 8px;
+      font-size: 16px;
+      text-align: center;
+      border-radius: 5px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
 
-.gallery-item:hover figcaption {
-  opacity: 1;
-}
+    .gallery-item:hover figcaption {
+      opacity: 1;
+    }
+
     @media (max-width: 768px) {
       .gallery-slider {
         grid-template-columns: repeat(2, 1fr);
@@ -297,6 +298,27 @@
       .gallery-slider {
         grid-template-columns: 1fr;
       }
+    }
+
+    .guestbook-container {
+      margin-top: 20px;
+      background-color: #f4f4f4;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .guestbook-entry {
+      background-color: #fff;
+      padding: 15px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+
+    .guestbook-entry strong {
+      color: #2980b9;
     }
   </style>
 </head>
@@ -337,6 +359,7 @@
     <div class="box" id="pendidikan">
       <h2>Riwayat Pendidikan</h2>
       <p><strong>Universitas Internasional Semen Indonesia</strong><br>Sistem Informasi (2023 - Sekarang)</p>
+      <p><strong>SMK Semen Gresik</strong><br>Jurusan Rekayas Perangkat Lunak (RKPL), Lulus (2023)</p>
     </div>
 
     <div class="box" id="video">
@@ -399,7 +422,59 @@
       </div>
     </div>
   </div>
-
+  <div class="box" id="bukutamu">
+    <h2>Buku Tamu</h2>
+    <div class="guestbook-container">
+      <h3>Silakan tinggalkan pesan Anda:</h3>
+      <form id="guestbookForm">
+        <input type="text" placeholder="Nama" id="guestName" required />
+        <input type="email" placeholder="Email" id="guestEmail" required />
+        <textarea placeholder="Pesan" id="guestMessage" required></textarea>
+        <button type="submit">Kirim Pesan</button>
+      </form>
+  
+      <div id="guestbookEntries">
+        <!-- Pesan pengunjung akan muncul di sini -->
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    // Menangani pengiriman pesan buku tamu
+    const form = document.getElementById('guestbookForm');
+    const guestbookEntries = document.getElementById('guestbookEntries');
+  
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+  
+      // Mengambil data dari input form
+      const name = document.getElementById('guestName').value;
+      const email = document.getElementById('guestEmail').value;
+      const message = document.getElementById('guestMessage').value;
+  
+      // Membuat elemen pesan baru untuk buku tamu
+      const guestEntry = document.createElement('div');
+      guestEntry.classList.add('guestbook-entry');
+  
+      guestEntry.innerHTML = `
+        <strong>${name}</strong> (${email})<br>
+        <p>${message}</p>
+        <button class="delete-button">Hapus</button>
+      `;
+  
+      // Menambahkan pesan baru ke dalam daftar buku tamu
+      guestbookEntries.appendChild(guestEntry);
+  
+      // Menambahkan fungsionalitas untuk menghapus pesan
+      const deleteButton = guestEntry.querySelector('.delete-button');
+      deleteButton.addEventListener('click', function () {
+        guestbookEntries.removeChild(guestEntry);
+      });
+  
+      // Membersihkan form setelah pengiriman
+      form.reset();
+    });
+  </script>  
   <footer>
     <span>Temui saya di:</span>
     <a href="jumlah folloer instagram.html">📸 Instagram</a>
