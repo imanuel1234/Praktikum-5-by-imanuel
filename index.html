@@ -5,163 +5,171 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Portofolio Imanuel Fernando</title>
   <style>
-    * {
-      box-sizing: border-box;
-    }
+  * {
+    box-sizing: border-box;
+  }
 
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background-color: #f4f4f4;
-    }
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #e0f0ff; /* Biru muda lembut */
+  }
 
-    .marquee {
-      background-color: #1f6dd9;
-      color: #fff;
-      padding: 10px;
-      font-weight: bold;
-      font-size: 16px;
-    }
+  .marquee {
+    background-color: #1f6dd9;
+    color: #fff;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 16px;
+  }
 
-    .slider {
-      position: relative;
-      height: 300px;
-      overflow: hidden;
-    }
+  .slider {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+    background-color: #1f6dd9; /* Background slider biru */
+  }
 
-    .slides {
-      display: flex;
-      height: 100%;
-      transition: transform 0.8s ease;
-    }
+  .slides {
+    display: flex;
+    height: 100%;
+    transition: transform 0.8s ease;
+  }
 
-    .slides img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      flex-shrink: 0;
-    }
+  .slides img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
 
-    .slider h1 {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background-color: rgba(0, 0, 0, 0.5);
-      padding: 20px 40px;
-      color: white;
-      font-size: 32px;
-      border-radius: 10px;
-      z-index: 2;
-    }
+  .slider h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px 40px;
+    color: white;
+    font-size: 32px;
+    border-radius: 10px;
+    z-index: 2;
+  }
 
-    nav {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-      background-color: #2980b9;
-      padding: 10px;
-    }
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    background-color: #2980b9;
+    padding: 10px;
+  }
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-    }
+  nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+  }
 
-    nav a:hover {
-      text-decoration: underline;
-    }
+  nav a:hover {
+    text-decoration: underline;
+  }
 
-    .container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
-      padding: 20px;
-      max-width: 1200px;
-      margin: auto;
-    }
+  .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+    background-color: #ffffff; /* Putih bersih */
+    border-radius: 10px;
+  }
 
-    .box {
-      background-color: #eaeff2;
-      border-radius: 10px;
-      padding: 20px;
-    }
+  .box {
+    background-color: #eaeff2;
+    border-radius: 10px;
+    padding: 20px;
+  }
 
-    .box h2 {
-      color: #2980b9;
-    }
+  #bukuTamu {
+    background-color: #d1ecf1; /* Biru muda untuk Buku Tamu */
+  }
 
-    img.profile {
-      width: 100%;
-      border-radius: 10px;
-      margin-top: 10px;
-    }
+  .box h2 {
+    color: #2980b9;
+  }
 
-    form input,
-    form textarea {
-      width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      margin-bottom: 15px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
+  img.profile {
+    width: 100%;
+    border-radius: 10px;
+    margin-top: 10px;
+  }
 
-    form button {
-      background-color: #2980b9;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
+  form input,
+  form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
 
-    form button:hover {
-      background-color: #21618c;
-    }
+  form button {
+    background-color: #2980b9;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
 
-    .media video,
-    .media audio {
-      width: 100%;
-      margin-top: 10px;
-      border-radius: 10px;
-    }
+  form button:hover {
+    background-color: #21618c;
+  }
 
-    footer {
-      background-color: #2980b9;
-      color: white;
-      text-align: center;
-      padding: 15px 0;
-      margin-top: 20px;
-    }
+  .media video,
+  .media audio {
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 10px;
+  }
 
-    .guest-message {
-      background-color: #fff;
-      border: 1px solid #ccc;
-      padding: 10px;
-      margin-top: 10px;
-      border-radius: 5px;
-      position: relative;
-    }
+  footer {
+    background-color: #2980b9;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    margin-top: 20px;
+  }
 
-    .guest-message strong {
-      color: #2980b9;
-    }
+  .guest-message {
+    background-color: #f9f9f9; /* Abu-abu putih */
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    position: relative;
+  }
 
-    .delete-button {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background: red;
-      color: white;
-      border: none;
-      padding: 5px 10px;
-      border-radius: 3px;
-      cursor: pointer;
-    }
-  </style>
+  .guest-message strong {
+    color: #2980b9;
+  }
+
+  .delete-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+</style>
+
 </head>
 <body>
 
