@@ -2,31 +2,37 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Portofolio Imanuel Fernando</title>
   <style>
     * {
+      margin: 0;
+      padding: 0;
       box-sizing: border-box;
     }
 
     body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background-color: #f4f4f4;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom right, #2980b9, #6dd5fa);
+      color: #333;
+      line-height: 1.6;
     }
 
     .marquee {
       background-color: #1f6dd9;
-      color: #fff;
-      padding: 10px;
+      color: white;
+      padding: 12px 0;
       font-weight: bold;
-      font-size: 16px;
+      font-size: 18px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
 
     .slider {
       position: relative;
-      height: 300px;
+      height: 350px;
       overflow: hidden;
+      margin-top: 20px;
     }
 
     .slides {
@@ -40,6 +46,11 @@
       height: 100%;
       object-fit: cover;
       flex-shrink: 0;
+      transition: transform 0.3s ease;
+    }
+
+    .slides img:hover {
+      transform: scale(1.1);
     }
 
     .slider h1 {
@@ -48,18 +59,17 @@
       left: 50%;
       transform: translate(-50%, -50%);
       background-color: rgba(0, 0, 0, 0.5);
-      padding: 20px 40px;
+      padding: 15px 30px;
       color: white;
-      font-size: 32px;
+      font-size: 36px;
       border-radius: 10px;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
       z-index: 2;
     }
 
     nav {
       display: flex;
-      flex-wrap: wrap;
       justify-content: center;
-      gap: 20px;
       background-color: #2980b9;
       padding: 10px;
     }
@@ -68,58 +78,90 @@
       color: white;
       text-decoration: none;
       font-weight: bold;
+      margin: 0 20px;
+      font-size: 18px;
+      position: relative;
+      padding: 5px 10px;
+      border-radius: 5px;
     }
 
     nav a:hover {
-      text-decoration: underline;
+      text-decoration: none;
+      background-color: #21618c;
+      transform: scale(1.1);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     }
 
     .container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
+      gap: 25px;
       padding: 20px;
       max-width: 1200px;
       margin: auto;
     }
 
     .box {
-      background-color: #eaeff2;
-      border-radius: 10px;
+      background-color: #ffffff;
+      border-radius: 12px;
       padding: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+      text-align: center;
+    }
+
+    .box:hover {
+      transform: translateY(-10px);
     }
 
     .box h2 {
-      color: #2980b9;
+      color: #4400ff;
+      margin-bottom: 20px;
+      font-size: 24px;
     }
 
-    img.profile {
+    .profile {
       width: 100%;
-      border-radius: 10px;
-      margin-top: 10px;
+      border-radius: 12px;
+      margin-top: 15px;
+      border: 3px solid #2980b9;
+      transition: transform 0.3s ease;
+    }
+
+    .profile:hover {
+      transform: scale(1.05);
     }
 
     form input,
     form textarea {
       width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      margin-bottom: 15px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
+      padding: 12px;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      transition: border 0.3s ease;
+    }
+
+    form input:focus,
+    form textarea:focus {
+      border-color: #7b807c;
     }
 
     form button {
-      background-color: #2980b9;
-      color: white;
+      background-color: #ffbf0f;
+      color: rgb(0, 0, 0);
       border: none;
-      padding: 10px 20px;
-      border-radius: 5px;
+      padding: 12px 25px;
+      border-radius: 8px;
       cursor: pointer;
+      font-weight: bold;
+      transition: transform 0.3s ease, background-color 0.3s ease;
     }
 
     form button:hover {
-      background-color: #21618c;
+      background-color: #ffffff;
+      transform: scale(1.1);
     }
 
     .media video,
@@ -130,20 +172,36 @@
     }
 
     footer {
-      background-color: #2980b9;
-      color: white;
+      background-color: #7a7a7a;
+      color: rgb(0, 0, 0);
       text-align: center;
       padding: 15px 0;
-      margin-top: 20px;
+      margin-top: 30px;
+    }
+
+    footer a {
+      color: rgb(0, 0, 0);
+      margin: 0 10px;
+      font-size: 18px;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
     }
 
     .guest-message {
-      background-color: #fff;
-      border: 1px solid #ccc;
-      padding: 10px;
-      margin-top: 10px;
-      border-radius: 5px;
+      background-color: #a0a0a0;
+      border: 1px solid #0bfff3;
+      padding: 15px;
+      margin-top: 15px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgb(0, 0, 0);
       position: relative;
+      transition: transform 0.3s ease;
+    }
+
+    .guest-message:hover {
+      transform: scale(1.02);
     }
 
     .guest-message strong {
@@ -154,154 +212,158 @@
       position: absolute;
       top: 10px;
       right: 10px;
-      background: red;
+      background: #eb0800;
       color: white;
       border: none;
-      padding: 5px 10px;
-      border-radius: 3px;
+      padding: 8px 15px;
+      border-radius: 5px;
       cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .delete-button:hover {
+      background: #c9302c;
+      transform: scale(1.1);
     }
   </style>
 </head>
 <body>
 
-<div class="marquee">
-  <marquee behavior="scroll" direction="left">Selamat datang di portofolio Imanuel Fernando! Terima kasih telah berkunjung 👋</marquee>
-</div>
-
-<div class="slider">
-  <div class="slides" id="sliderImages">
-    <img src="uisi-kampus-swasta-berkelas-internasional-U1S-thumb.jpg" alt="Gambar 1" />
-    <img src="20240723_150957-2527100743.webp" alt="Gambar 2" />
-    <img src="20230911082553.jpg" alt="Gambar 3" />
-    <img src="c6b144d6139f6e93ebbce51bdd99d1f7.jpg" alt="Gambar 4" />
-    <img src="WhatsApp Image 2025-03-22 at 03.42.57.jpeg" alt="Gambar 5" />
-    <img src="WhatsApp Image 2025-04-14 at 09.41.40.jpeg" alt="Gambar 6" />
-  </div>
-  <h1>Imanuel Fernando</h1>
-</div>
-
-<nav>
-  <a href="#tentang">Tentang Saya</a>
-  <a href="#pendidikan">Riwayat Pendidikan</a>
-  <a href="#video">Video</a>
-  <a href="#audio">Audio</a>
-  <a href="#kontak">Kontak</a>
-</nav>
-
-<div class="container">
-  <div class="box" id="tentang">
-    <h2>Tentang Saya</h2>
-    <p>Halo! Saya Imanuel Fernando, mahasiswa Sistem Informasi yang antusias dengan dunia teknologi. Saya menyukai pemrograman, multimedia, serta memiliki ketertarikan besar dalam desain UI/UX dan pengembangan web. Selain itu, saya juga aktif membuat konten digital, baik berupa video maupun audio kreatif.</p>
-    <img src="WhatsApp Image 2025-04-14 at 09.41.02.jpeg" alt="Foto Imanuel" class="profile" />
+  <div class="marquee">
+    <marquee behavior="scroll" direction="left">Selamat datang di portofolio Imanuel Fernando! Terima kasih telah berkunjung 👋</marquee>
   </div>
 
-  <div class="box" id="pendidikan">
-    <h2>Riwayat Pendidikan</h2>
-    <p><strong>Universitas Internasional Semen Indonesia</strong><br />S1 Program Studi Sistem Informasi, Semester 4</p>
-    <p><strong>SMK Semen Gresik</strong><br />Rekayasa Perangkat Lunak (RKPL) - Lulus 2023</p>
+  <div class="slider">
+    <div class="slides" id="sliderImages">
+      <img src="uisi-kampus-swasta-berkelas-internasional-U1S-thumb.jpg" alt="Gambar 1" />
+      <img src="20240723_150957-2527100743.webp" alt="Gambar 2" />
+      <img src="20230911082553.jpg" alt="Gambar 3" />
+      <img src="c6b144d6139f6e93ebbce51bdd99d1f7.jpg" alt="Gambar 4" />
+      <img src="WhatsApp Image 2025-03-22 at 03.42.57.jpeg" alt="Gambar 5" />
+      <img src="WhatsApp Image 2025-04-14 at 09.41.40.jpeg" alt="Gambar 6" />
+    </div>
+    <h1>Imanuel Fernando</h1>
   </div>
 
-  <div class="box media" id="video">
-    <h2>Video</h2>
-    <p>Berikut adalah salah satu video projek multimedia yang saya buat:</p>
-    <video controls>
-      <source src="WhatsApp Video 2025-04-20 at 22.29.10.mp4" type="video/mp4" />
-      Browser Anda tidak mendukung pemutar video.
-    </video>
+  <nav>
+    <a href="#tentang">Tentang Saya</a>
+    <a href="#pendidikan">Riwayat Pendidikan</a>
+    <a href="#video">Video</a>
+    <a href="#audio">Audio</a>
+    <a href="#kontak">Kontak</a>
+  </nav>
+
+  <div class="container">
+    <div class="box" id="tentang">
+      <h2>Tentang Saya</h2>
+      <p>Halo! Saya Imanuel Fernando, mahasiswa Sistem Informasi yang antusias dengan dunia teknologi...</p>
+      <img src="WhatsApp Image 2025-04-14 at 09.41.02.jpeg" alt="Foto Imanuel" class="profile" />
+    </div>
+
+    <div class="box" id="pendidikan">
+      <h2>Riwayat Pendidikan</h2>
+      <p><strong>Universitas Internasional Semen Indonesia</strong><br />S1 Program Studi Sistem Informasi, Semester 4</p>
+      <p><strong>SMK Semen Gresik</strong><br />Rekayasa Perangkat Lunak (RKPL) - Lulus 2023</p>
+    </div>
+
+    <div class="box media" id="video">
+      <h2>Video</h2>
+      <p>Berikut adalah salah satu video projek multimedia yang saya buat:</p>
+      <video controls>
+        <source src="WhatsApp Video 2025-04-20 at 22.29.10.mp4" type="video/mp4" />
+        Browser Anda tidak mendukung pemutar video.
+      </video>
+    </div>
+
+    <div class="box media" id="audio">
+      <h2>Audio Narasi</h2>
+      <p>Berikut adalah audio narasi yang pernah saya produksi:</p>
+      <audio controls>
+        <source src="WhatsApp Ptt 2025-04-20 at 22.36.32.mp3" type="audio/mpeg" />
+        Browser Anda tidak mendukung pemutar audio.
+      </audio>
+    </div>
+
+    <div class="box" id="kontak">
+      <h2>Kontak</h2>
+      <p>Jika Anda memiliki pertanyaan, saran, atau ingin bekerja sama, silakan isi formulir di bawah ini.</p>
+      <form>
+        <label for="name">Name:</label>
+        <input type="text" id="name" required />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" required />
+
+        <label for="pesan">Pesan:</label>
+        <textarea id="pesan" rows="4" required></textarea>
+
+        <button type="submit">Kirim</button>
+      </form>
+    </div>
+
+    <!-- Buku Tamu -->
+    <div class="box" id="bukuTamu">
+      <h2>Buku Tamu</h2>
+      <p>Silakan tinggalkan pesan atau kesan Anda di buku tamu ini:</p>
+      <form id="formBukuTamu">
+        <label for="namaTamu">Nama:</label>
+        <input type="text" id="namaTamu" required />
+
+        <label for="kesan">Kesan & Pesan:</label>
+        <textarea id="kesan" rows="4" required></textarea>
+
+        <button type="submit">Kirim ke Buku Tamu</button>
+      </form>
+      <div id="daftarPesan"></div>
+    </div>
   </div>
 
-  <div class="box media" id="audio">
-    <h2>Audio Narasi</h2>
-    <p>Berikut adalah audio narasi yang pernah saya produksi:</p>
-    <audio controls>
-      <source src="WhatsApp Ptt 2025-04-20 at 22.36.32.mp3" type="audio/mpeg" />
-      Browser Anda tidak mendukung pemutar audio.
-    </audio>
-  </div>
+  <footer>
+    © 2025 Imanuel. Semua hak dilindungi.<br><br>
+    <span>Temui saya di:</span><br>
+    <a href="jumlah folloer instagram.html" style="color: white; margin: 0 10px;">📸 Instagram</a>
+    <a href="facebook.html" style="color: white; margin: 0 10px;">📘 Facebook</a>
+    <a href="snack video.html" style="color: white; margin: 0 10px;">🎞️ Snack Video</a>
+    <a href="twitter.html" style="color: white; margin: 0 10px;">🐦 Twitter</a>
+  </footer>
 
-  <div class="box" id="kontak">
-    <h2>Kontak</h2>
-    <p>Jika Anda memiliki pertanyaan, saran, atau ingin bekerja sama, silakan isi formulir di bawah ini.</p>
-    <form>
-      <label for="name">Name:</label>
-      <input type="text" id="name" required />
+  <script>
+    const slidesContainer = document.getElementById("sliderImages");
+    const images = slidesContainer.querySelectorAll("img");
+    let currentIndex = 0;
 
-      <label for="email">Email:</label>
-      <input type="email" id="email" required />
-
-      <label for="pesan">Pesan:</label>
-      <textarea id="pesan" rows="4" required></textarea>
-
-      <button type="submit">Kirim</button>
-    </form>
-  </div>
-
-  <!-- Buku Tamu -->
-  <div class="box" id="bukuTamu">
-    <h2>Buku Tamu</h2>
-    <p>Silakan tinggalkan pesan atau kesan Anda di buku tamu ini:</p>
-    <form id="formBukuTamu">
-      <label for="namaTamu">Nama:</label>
-      <input type="text" id="namaTamu" required />
-
-      <label for="kesan">Kesan & Pesan:</label>
-      <textarea id="kesan" rows="4" required></textarea>
-
-      <button type="submit">Kirim ke Buku Tamu</button>
-    </form>
-    <div id="daftarPesan"></div>
-  </div>
-</div>
-
-<footer>
-  © 2025 Imanuel. Semua hak dilindungi.<br><br>
-  <span>Temui saya di:</span><br>
-  <a href="jumlah folloer instagram.html" style="color: white; margin: 0 10px;">📸 Instagram</a>
-  <a href="facebook.html" style="color: white; margin: 0 10px;">📘 Facebook</a>
-  <a href="snack video.html" style="color: white; margin: 0 10px;">🎞️ Snack Video</a>
-  <a href="twitter.html" style="color: white; margin: 0 10px;">🐦 Twitter</a>
-</footer>
-
-<!-- JavaScript untuk slider dan buku tamu -->
-<script>
-  const slidesContainer = document.getElementById("sliderImages");
-  const images = slidesContainer.querySelectorAll("img");
-  let currentIndex = 0;
-
-  function slideNext() {
-    currentIndex++;
-    if (currentIndex >= images.length) {
-      currentIndex = 0;
+    function slideNext() {
+      currentIndex++;
+      if (currentIndex >= images.length) {
+        currentIndex = 0;
+      }
+      slidesContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
     }
-    slidesContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
-  }
 
-  setInterval(slideNext, 2000);
+    setInterval(slideNext, 2000);
 
-  // Buku Tamu Script
-  document.getElementById("formBukuTamu").addEventListener("submit", function(event) {
-    event.preventDefault();
+    document.getElementById("formBukuTamu").addEventListener("submit", function(event) {
+      event.preventDefault();
 
-    const nama = document.getElementById("namaTamu").value.trim();
-    const pesan = document.getElementById("kesan").value.trim();
+      const nama = document.getElementById("namaTamu").value.trim();
+      const pesan = document.getElementById("kesan").value.trim();
 
-    if (nama && pesan) {
-      const daftar = document.getElementById("daftarPesan");
-      const kotak = document.createElement("div");
-      kotak.classList.add("guest-message");
-      kotak.innerHTML = `<strong>${nama}</strong><br>${pesan}<button class='delete-button' onclick='hapusPesan(this)'>Hapus</button>`;
-      daftar.appendChild(kotak);
+      if (nama && pesan) {
+        const daftar = document.getElementById("daftarPesan");
+        const kotak = document.createElement("div");
+        kotak.classList.add("guest-message");
+        kotak.innerHTML = `<strong>${nama}</strong><br>${pesan}<button class='delete-button' onclick='hapusPesan(this)'>Hapus</button>`;
+        daftar.appendChild(kotak);
 
-      this.reset();
+        this.reset();
+      }
+    });
+
+    function hapusPesan(button) {
+      const pesanElement = button.parentElement;
+      pesanElement.remove();
     }
-  });
-
-  function hapusPesan(button) {
-    const pesanElement = button.parentElement;
-    pesanElement.remove();
-  }
-</script>
+  </script>
 
 </body>
 </html>
