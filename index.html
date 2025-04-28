@@ -175,18 +175,41 @@
       background-color: #7a7a7a;
       color: rgb(0, 0, 0);
       text-align: center;
-      padding: 15px 0;
+      padding: 30px 20px;
       margin-top: 30px;
+      position: relative;
+      width: 100%;
+      bottom: 0;
+      left: 0;
+    }
+
+    footer span {
+      display: block;
+      margin-bottom: 15px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #ffffff;
     }
 
     footer a {
       color: rgb(0, 0, 0);
-      margin: 0 10px;
-      font-size: 18px;
+      margin: 0 15px;
+      font-size: 20px;
+      text-decoration: none;
     }
 
     footer a:hover {
       text-decoration: underline;
+    }
+
+    footer p {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #ffffff;
+    }
+
+    footer .social-icons {
+      margin-top: 10px;
     }
 
     .guest-message {
@@ -225,6 +248,56 @@
       background: #c9302c;
       transform: scale(1.1);
     }
+    .gallery-slider {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 kolom */
+  gap: 15px;
+  padding: 10px;
+}
+
+.gallery-item {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.gallery-item figcaption {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 8px;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 5px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.gallery-item:hover figcaption {
+  opacity: 1;
+}
+    @media (max-width: 768px) {
+      .gallery-slider {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .gallery-slider {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 <body>
@@ -251,6 +324,7 @@
     <a href="#video">Video</a>
     <a href="#audio">Audio</a>
     <a href="#kontak">Kontak</a>
+    <a href="#galeri">Galeri</a>
   </nav>
 
   <div class="container">
@@ -262,108 +336,77 @@
 
     <div class="box" id="pendidikan">
       <h2>Riwayat Pendidikan</h2>
-      <p><strong>Universitas Internasional Semen Indonesia</strong><br />S1 Program Studi Sistem Informasi, Semester 4</p>
-      <p><strong>SMK Semen Gresik</strong><br />Rekayasa Perangkat Lunak (RKPL) - Lulus 2023</p>
+      <p><strong>Universitas Internasional Semen Indonesia</strong><br>Sistem Informasi (2023 - Sekarang)</p>
     </div>
 
-    <div class="box media" id="video">
-      <h2>Video</h2>
-      <p>Berikut adalah salah satu video projek multimedia yang saya buat:</p>
-      <video controls>
-        <source src="WhatsApp Video 2025-04-20 at 22.29.10.mp4" type="video/mp4" />
-        Browser Anda tidak mendukung pemutar video.
-      </video>
+    <div class="box" id="video">
+      <h2>Video Saya</h2>
+      <div class="media">
+        <video controls>
+          <source src="vid1.mp4" type="video/mp4" />
+          Browser Anda tidak mendukung elemen video.
+        </video>
+      </div>
     </div>
 
-    <div class="box media" id="audio">
-      <h2>Audio Narasi</h2>
-      <p>Berikut adalah audio narasi yang pernah saya produksi:</p>
-      <audio controls>
-        <source src="WhatsApp Ptt 2025-04-20 at 22.36.32.mp3" type="audio/mpeg" />
-        Browser Anda tidak mendukung pemutar audio.
-      </audio>
+    <div class="box" id="audio">
+      <h2>Audio Saya</h2>
+      <div class="media">
+        <audio controls>
+          <source src="audio1.mp3" type="audio/mp3" />
+          Browser Anda tidak mendukung elemen audio.
+        </audio>
+      </div>
     </div>
 
     <div class="box" id="kontak">
       <h2>Kontak</h2>
-      <p>Jika Anda memiliki pertanyaan, saran, atau ingin bekerja sama, silakan isi formulir di bawah ini.</p>
-      <form>
-        <label for="name">Name:</label>
-        <input type="text" id="name" required />
-
-        <label for="email">Email:</label>
-        <input type="email" id="email" required />
-
-        <label for="pesan">Pesan:</label>
-        <textarea id="pesan" rows="4" required></textarea>
-
-        <button type="submit">Kirim</button>
+      <form action="#">
+        <input type="text" placeholder="Nama Lengkap" required />
+        <input type="email" placeholder="Email" required />
+        <textarea placeholder="Pesan" required></textarea>
+        <button type="submit">Kirim Pesan</button>
       </form>
     </div>
 
-    <!-- Buku Tamu -->
-    <div class="box" id="bukuTamu">
-      <h2>Buku Tamu</h2>
-      <p>Silakan tinggalkan pesan atau kesan Anda di buku tamu ini:</p>
-      <form id="formBukuTamu">
-        <label for="namaTamu">Nama:</label>
-        <input type="text" id="namaTamu" required />
-
-        <label for="kesan">Kesan & Pesan:</label>
-        <textarea id="kesan" rows="4" required></textarea>
-
-        <button type="submit">Kirim ke Buku Tamu</button>
-      </form>
-      <div id="daftarPesan"></div>
+    <div class="box" id="galeri">
+      <h2>Galeri Foto</h2>
+      <div class="gallery-slider">
+        <figure class="gallery-item">
+          <img src="20240723_150957-2527100743.webp" alt="Foto 1" />
+          <figcaption>Foto 1</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <img src="20230911082553.jpg" alt="Foto 2" />
+          <figcaption>Foto 2</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <img src="c6b144d6139f6e93ebbce51bdd99d1f7.jpg" alt="Foto 3" />
+          <figcaption>Foto 3</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <img src="WhatsApp Image 2025-03-22 at 03.42.57.jpeg" alt="Foto 4" />
+          <figcaption>Foto 4</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <img src="uisi-kampus-swasta-berkelas-internasional-U1S-thumb.jpg" alt="Foto 5" />
+          <figcaption>Foto 5</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <img src="WhatsApp Image 2025-04-14 at 09.41.02.jpeg" alt="Foto 6" />
+          <figcaption>Foto 6</figcaption>
+        </figure>
+      </div>
     </div>
   </div>
 
   <footer>
-    © 2025 Imanuel. Semua hak dilindungi.<br><br>
-    <span>Temui saya di:</span><br>
-    <a href="jumlah folloer instagram.html" style="color: white; margin: 0 10px;">📸 Instagram</a>
-    <a href="facebook.html" style="color: white; margin: 0 10px;">📘 Facebook</a>
-    <a href="snack video.html" style="color: white; margin: 0 10px;">🎞️ Snack Video</a>
-    <a href="twitter.html" style="color: white; margin: 0 10px;">🐦 Twitter</a>
+    <span>Temui saya di:</span>
+    <a href="jumlah folloer instagram.html">📸 Instagram</a>
+    <a href="facebook.html">📘 Facebook</a>
+    <a href="snack video.html">🎞️ Snack Video</a>
+    <a href="twitter.html">🐦 Twitter</a>
+    <p>© 2025 Imanuel. Semua hak dilindungi.</p>
   </footer>
-
-  <script>
-    const slidesContainer = document.getElementById("sliderImages");
-    const images = slidesContainer.querySelectorAll("img");
-    let currentIndex = 0;
-
-    function slideNext() {
-      currentIndex++;
-      if (currentIndex >= images.length) {
-        currentIndex = 0;
-      }
-      slidesContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
-    }
-
-    setInterval(slideNext, 2000);
-
-    document.getElementById("formBukuTamu").addEventListener("submit", function(event) {
-      event.preventDefault();
-
-      const nama = document.getElementById("namaTamu").value.trim();
-      const pesan = document.getElementById("kesan").value.trim();
-
-      if (nama && pesan) {
-        const daftar = document.getElementById("daftarPesan");
-        const kotak = document.createElement("div");
-        kotak.classList.add("guest-message");
-        kotak.innerHTML = `<strong>${nama}</strong><br>${pesan}<button class='delete-button' onclick='hapusPesan(this)'>Hapus</button>`;
-        daftar.appendChild(kotak);
-
-        this.reset();
-      }
-    });
-
-    function hapusPesan(button) {
-      const pesanElement = button.parentElement;
-      pesanElement.remove();
-    }
-  </script>
-
 </body>
 </html>
