@@ -5,6 +5,94 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Portofolio Imanuel Fernando</title>
   <style>
+    <script>
+  const slidesContainer = document.getElementById("sliderImages");
+  const images = slidesContainer.querySelectorAll("img");
+  let currentIndex = 0;
+
+  function slideNext() {
+    currentIndex++;
+    if (currentIndex >= images.length) {
+      currentIndex = 0;
+    }
+    slidesContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+  }
+
+  setInterval(slideNext, 2000);
+
+  // Buku Tamu Script
+  document.getElementById("formBukuTamu").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const nama = document.getElementById("namaTamu").value.trim();
+    const pesan = document.getElementById("kesan").value.trim();
+
+    if (nama && pesan) {
+      const daftar = document.getElementById("daftarPesan");
+      const kotak = document.createElement("div");
+      kotak.classList.add("guest-message");
+      kotak.innerHTML = `<strong>${nama}</strong><br>${pesan}<button class='delete-button' onclick='hapusPesan(this)'>Hapus</button>`;
+      daftar.appendChild(kotak);
+
+      this.reset();
+      hitungPesan(); // Update jumlah pesan setelah menambah
+      alert("Pesan berhasil dikirim!");
+    }
+  });
+
+  function hapusPesan(button) {
+    if (confirm("Apakah Anda yakin ingin menghapus pesan ini?")) {
+      const pesanElement = button.parentElement;
+      pesanElement.remove();
+      hitungPesan(); // Update jumlah pesan setelah hapus
+    }
+  }
+
+  // Validasi Form Kontak (tambahan)
+  document.querySelector("#kontak form").addEventListener("submit", function(e) {
+    const nama = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const pesan = document.getElementById("pesan").value.trim();
+
+    if (!nama || !email || !pesan) {
+      e.preventDefault();
+      alert("Harap lengkapi semua bidang sebelum mengirim!");
+    } else {
+      alert("Terima kasih telah menghubungi saya!");
+    }
+  });
+
+  // Fitur Back to Top Button
+  const tombolTop = document.createElement("button");
+  tombolTop.textContent = "⬆️ Top";
+  tombolTop.style.position = "fixed";
+  tombolTop.style.bottom = "20px";
+  tombolTop.style.right = "20px";
+  tombolTop.style.padding = "10px";
+  tombolTop.style.display = "none";
+  tombolTop.style.backgroundColor = "#2980b9";
+  tombolTop.style.color = "white";
+  tombolTop.style.border = "none";
+  tombolTop.style.borderRadius = "5px";
+  tombolTop.style.cursor = "pointer";
+  document.body.appendChild(tombolTop);
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) {
+      tombolTop.style.display = "block";
+    } else {
+      tombolTop.style.display = "none";
+    }
+  });
+
+  tombolTop.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // Hitung jumlah pesan di Buku Tamu
+  function hitungPesan() {
+    const total = document.querySelectorAll(".guest-message").length;
+    console.log(`Total pesan di Buku Tamu: ${total}`);
     * {
       box-sizing: border-box;
     }
@@ -304,4 +392,4 @@
 </script>
 
 </body>
-</html>memakai JavaScript dasar
+</html>
